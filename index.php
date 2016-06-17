@@ -53,30 +53,6 @@ include("header.php"); // استدعاء ملف الهيدر
     ?>
 
     <div class="col-xs-12  col-sm-9 col-md-9 col-lg-9 " id="secondDiv">
-
-        <?php
-        include("fast_search.php"); //  استدعاء ملف القائمة الجانبية
-        ?>
-
-        <?php
-        include("gallery.php"); // معرض الصور المصغر
-        ?>
-
-
-        <div style="clear:both;"></div>
-        <a href="add.php" class="btn btn-success btn-lg "><i class="fa fa-plus "></i> أضف إعلانك معنا</a>
-        <div class="btn-group btn-group pull-left" data-toggle="buttons">
-            <button class="btn btn-primary active" onclick="location.href='<?php echo $url_hraj; ?>index.php'"><i
-                    class="fa fa-globe"></i></button>
-            <button class="btn btn-primary " onclick="location.href='<?php echo $url_hraj; ?>____/السيارات'"><i
-                    class="fa fa-camera-retro  "></i></button>
-        </div>
-
-        <div style="clear:both;"></div>
-
-        <br>
-
-
         <?php
         include("include/functions/ftime.php");
         /// استعدعاء ملف الأتصال بقاعدة البيانات
@@ -488,13 +464,6 @@ include("header.php"); // استدعاء ملف الهيدر
 
 
 </div>
-
-</div>
-
-
-<?php
-include("footer.php"); // ادراج الفوتر
-?>
 
 
 </body>
