@@ -169,6 +169,7 @@ include("header.php"); // استدعاء ملف الهيدر
                 $limit = 40;         //how many items to show per page
 
                 $start = 0;        //if no page var is given, set start to 0
+                $page = 0;
                 if (isset($_GET["page"])) {
                     $page = $_GET["page"];
                     $start = ($page - 1) * $limit;    //first item to display on this page
