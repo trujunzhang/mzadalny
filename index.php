@@ -8,7 +8,6 @@ mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_keyinformation_print = "SELECT * FROM `keyinformation` WHERE id = \"1\" ";
 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
 $print_value = mysqli_fetch_array($result_keyinformation_print);
-define("num", "1");
 ?>
 
 <!DOCTYPE html>
@@ -163,16 +162,17 @@ include("header.php"); // استدعاء ملف الهيدر
                 $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC";
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $total_pages = mysqli_fetch_array(mysqli_query($mysqli, $query));
-                $total_pages = $total_pages[num];
+                $total_pages = $total_pages["num"];
 
                 /* Setup vars for query. */
                 $targetpage = "index.php";  //your file name  (the name of this file)
                 $limit = 40;         //how many items to show per page
-                $page = $_GET['page'];
-                if ($page)
+
+                $start = 0;        //if no page var is given, set start to 0
+                if (isset($_GET["page"])) {
+                    $page = $_GET["page"];
                     $start = ($page - 1) * $limit;    //first item to display on this page
-                else
-                    $start = 0;        //if no page var is given, set start to 0
+                }
 
                 /* Get data. */
                 $sql = "SELECT * FROM `$tbl_name` WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC LIMIT $start, $limit";
