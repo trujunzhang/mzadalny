@@ -8,22 +8,14 @@ mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_keyinformation_print = "SELECT * FROM `keyinformation` WHERE id = \"1\" ";
 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
 $print_value = mysqli_fetch_array($result_keyinformation_print);
-$namewebsite = $print_value[namewebsite];
-$keywords = $print_value[keywords];
-$messagesphone = $print_value[messagesphone];
-$description = nl2br($print_value[description]);
-$Facebook_account = $print_value[Facebook_account];
-$Twitter_account = $print_value[Twitter_account];
 ?>
 
 <!DOCTYPE html>
 <html lang="ar-sa" dir="rtl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?php echo $namewebsite; ?></title>
-    <meta name="description" content="<?php echo $description; ?>">
-    <meta name="keywords" content="<?php echo $keywords; ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>المزاد العلني</title>
+    <meta name="description" content="حراج .حراج .المزاد العلني سوق سعودي لبيع وشراء السيارات و العقارات  و المواشي وجميع السلع الأخرى المستعمله والجديده ..">
+    <meta name="keywords" content="حراج,المزاد العلني,بيع,للبيع,السوق,مزاد علني,للحراج,نشتري,نبيع">
     <link href="templates/default/css/bootstrap.rtl.min.css" rel="stylesheet" media="screen">
     <link href="templates/default/css/custom3.css?v=1.4" rel="stylesheet" media="screen">
     <link href="templates/default/css/font-awesome.css" rel="stylesheet">
