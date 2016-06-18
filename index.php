@@ -605,5 +605,12 @@ include("header.php"); // استدعاء ملف الهيدر
 </div>
 
 
+<?php
+include("footer.php"); // استدعاء ملف الهيدر
+?>
+
+<br>
+
+
 </body>
 </html>
