@@ -78,11 +78,11 @@ include("header.php"); // استدعاء ملف الهيدر
                 $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" and fixed_home = \"1\" ORDER BY Last_updated_Ad DESC";
                 $query_ads_ex = mysqli_query($mysqli, $query_ads);
                 while ($row = mysqli_fetch_array($query_ads_ex)) {
-                    $ads_city = $row[ads_city];
-                    $id_ads = $row[id];
-                    $His_announcement = $row[His_announcement];
-                    $image_link = $row[image_link];
-                    $Time_added = timeago($row[Time_added]);
+                    $ads_city = $row["ads_city"];
+                    $id_ads = $row["id"];
+                    $His_announcement = $row["His_announcement"];
+                    $image_link = $row["image_link"];
+                    $Time_added = timeago($row["Time_added"]);
 
 
                     $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
@@ -95,16 +95,16 @@ include("header.php"); // استدعاء ملف الهيدر
                     $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
                     $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
                     $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
-                    $group_num_m_ad = $Data_member_m_ad[groupnumber];
-                    $username_member_2_m_ad = $Data_member_m_ad[username];
-                    $id_user_m_ad = $Data_member_m_ad[id];
+                    $group_num_m_ad = $Data_member_m_ad["groupnumber"];
+                    $username_member_2_m_ad = $Data_member_m_ad["username"];
+                    $id_user_m_ad = $Data_member_m_ad["id"];
 
                     mysqli_query($mysqli, "SET NAMES 'utf8'");
                     $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
                     $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
                     $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
-                    $ads_city_name = $print_value_city[text];
-                    $ads_city_id = $print_value_city[id];
+                    $ads_city_name = $print_value_city["text"];
+                    $ads_city_id = $print_value_city["id"];
 
 
                     ?>
@@ -114,9 +114,9 @@ include("header.php"); // استدعاء ملف الهيدر
                     <tr>
                         <td><i class="star fa fa-star fa-lg"></i></td>
                         <td>
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row[id]; ?>/<?php echo $row[ads_title]; ?>"><?php echo $row[ads_title]; ?></a>
+                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
 
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row[id]; ?>/<?php echo $row[ads_title]; ?>">
+                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
                                 <?php if (empty($image_link)) {
                                 } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
@@ -125,7 +125,7 @@ include("header.php"); // استدعاء ملف الهيدر
                             } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
 
                         <td>
-                            <a href="<?php echo $url_hraj; ?>city/<?php echo $row[ads_city]; ?>/<?php echo $ads_city_name; ?>"
+                            <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
                                class="smallsize">
                                 <?php echo $ads_city_name; ?></a></td>
 
