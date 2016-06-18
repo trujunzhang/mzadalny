@@ -484,123 +484,122 @@ include("header.php"); // استدعاء ملف الهيدر
 
         </div>
 
-    </div>
 
-    <br>
-    <hr>
-    <br>
-
-
-    <div class="hidden-xs">
+        <br>
+        <hr>
+        <br>
 
 
-        <h3>الطلبات </h3>
+        <div class="hidden-xs">
 
 
-        <?php
-        include("include/config.php");
-        mysqli_query($mysqli, "SET NAMES 'utf8'");
-        $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"2\" ORDER BY Last_updated_Ad DESC LIMIT 5";
-        $query_ads_ex = mysqli_query($mysqli, $query_ads);
-        $query_ads_ex_num = mysqli_num_rows($query_ads_ex);
-        if ($query_ads_ex_num > 0) {
-            ?>
-
-            <table class="table tableAds table-borderedAds ">
-
-                <tbody>
-                <tr>
-
-                    <th></th>
-                    <th>الطلبات</th>
-                    <th>المدينة</th>
-                    <th>المعلن</th>
-
-                    <th>قبل</th>
-                </tr>
+            <h3>الطلبات </h3>
 
 
-                <?php
-                while ($row = mysqli_fetch_array($query_ads_ex)) {
-                    $ads_city = $row["ads_city"];
-                    $id_ads = $row["id"];
-                    $His_announcement = $row["His_announcement"];
-                    $image_link = $row["image_link"];
-                    $Time_added = timeago($row["Time_added"]);
+            <?php
+            include("include/config.php");
+            mysqli_query($mysqli, "SET NAMES 'utf8'");
+            $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"2\" ORDER BY Last_updated_Ad DESC LIMIT 5";
+            $query_ads_ex = mysqli_query($mysqli, $query_ads);
+            $query_ads_ex_num = mysqli_num_rows($query_ads_ex);
+            if ($query_ads_ex_num > 0) {
+                ?>
+
+                <table class="table tableAds table-borderedAds ">
+
+                    <tbody>
+                    <tr>
+
+                        <th></th>
+                        <th>الطلبات</th>
+                        <th>المدينة</th>
+                        <th>المعلن</th>
+
+                        <th>قبل</th>
+                    </tr>
 
 
-                    $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
-                    $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
-                    $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
+                    <?php
+                    while ($row = mysqli_fetch_array($query_ads_ex)) {
+                        $ads_city = $row["ads_city"];
+                        $id_ads = $row["id"];
+                        $His_announcement = $row["His_announcement"];
+                        $image_link = $row["image_link"];
+                        $Time_added = timeago($row["Time_added"]);
 
 
-                    mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
-                    $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
-                    $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
-                    $group_num_m_ad = $Data_member_m_ad["groupnumber"];
-                    $username_member_2_m_ad = $Data_member_m_ad["username"];
-                    $id_user_m_ad = $Data_member_m_ad["id"];
-
-                    mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
-                    $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
-                    $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
-                    $ads_city_name = $print_value_city["text"];
-                    $ads_city_id = $print_value_city["id"];
+                        $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
+                        $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
+                        $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
 
 
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
+                        $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
+                        $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
+                        $group_num_m_ad = $Data_member_m_ad["groupnumber"];
+                        $username_member_2_m_ad = $Data_member_m_ad["username"];
+                        $id_user_m_ad = $Data_member_m_ad["id"];
+
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
+                        $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
+                        $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
+                        $ads_city_name = $print_value_city["text"];
+                        $ads_city_id = $print_value_city["id"];
+
+
+                        ?>
+
+
+                        </tr>
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+
+                                    <?php if (empty($image_link)) {
+                                    } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
+
+                                </a><?php if ($num_ex_ads_query === 0) {
+                                } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
+
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
+                                   class="smallsize">
+                                    <?php echo $ads_city_name; ?></a></td>
+
+                            <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
+                                   class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
+
+                            <td><?php echo $Time_added; ?></td>
+                        </tr>
+                        <?php
+                    }
                     ?>
 
 
-                    </tr>
-                    <tr>
-                        <td><?php echo $row["id"]; ?></td>
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+                    </tbody>
+                </table>
 
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
-                                <?php if (empty($image_link)) {
-                                } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
-
-                            </a><?php if ($num_ex_ads_query === 0) {
-                            } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
-
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
-                               class="smallsize">
-                                <?php echo $ads_city_name; ?></a></td>
-
-                        <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
-                               class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
-
-                        <td><?php echo $Time_added; ?></td>
-                    </tr>
-                    <?php
-                }
+                <a href="order.php" class="tag">المزيد من الطلبات</a>
+                <?php
+            } else {
                 ?>
+                <div class="alert alert-info">
+                    لا يتوفر طلبات في الوقت الحالي
+                </div>
+                <?php
+            }
 
-
-                </tbody>
-            </table>
-
-
-            <a href="order.php" class="tag">المزيد من الطلبات</a>
-            <?php
-        } else {
             ?>
-            <div class="alert alert-info">
-                لا يتوفر طلبات في الوقت الحالي
-            </div>
-            <?php
-        }
 
-        ?>
-
+        </div>
     </div>
-
 
 </div>
 
