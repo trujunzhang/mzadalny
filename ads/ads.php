@@ -119,8 +119,6 @@ $ads_city_name = $print_value_city["text"];
     <script type="text/javascript" src="<?php echo $url_hraj; ?>templates/default/js/cars.js"></script>
     <script src="<?php echo $url_hraj; ?>templates/default/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo $url_hraj; ?>templates/default/js/v5.js"></script>
-
-
 </head>
 <body>
 
@@ -147,16 +145,12 @@ include("../header.php"); // استدعاء ملف الهيدر
                 الإعلان المحذوف لايظهر إلا لصاحبه فقط
                 <br>
                 <div class="pull-left">
-
-
                 </div>
                 <br>
             </div>
             <?php
         }
         ?>
-
-
         <div align="center">
             <h3>
 
@@ -207,18 +201,11 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
                 <div class="ads_body">
-
-
                     <!--  start -->
-
-
                     <?php
                     echo $ads_body;
                     ?>
-
                     <br>
-
-
                     <?php
                     if (!empty($image_link)) {
                         $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
@@ -243,10 +230,7 @@ include("../header.php"); // استدعاء ملف الهيدر
 
                     }
                     ?>
-
-
                     <!--  end -->
-
 
                 </div>
                 <br>
@@ -798,17 +782,14 @@ include("../header.php"); // استدعاء ملف الهيدر
         <script>
 
 
-            $("button["
-            rel = popover
-            "]"
-            )
-            .popover({
-                offset: 10,
-                trigger: 'manual',
-                html: true,
-                placement: 'bottom',
-                template: '<div class="popover" onmouseover="clearTimeout(timeoutObj);$(this).mouseleave(function() {$(this).hide();});"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content reportUser"><p></p></div></div></div>'
-            }).mouseenter(function (e) {
+            $("button[rel=popover]")
+                .popover({
+                    offset: 10,
+                    trigger: 'manual',
+                    html: true,
+                    placement: 'bottom',
+                    template: '<div class="popover" onmouseover="clearTimeout(timeoutObj);$(this).mouseleave(function() {$(this).hide();});"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content reportUser"><p></p></div></div></div>'
+                }).mouseenter(function (e) {
                 $(this).popover('show');
             }).mouseleave(function (e) {
                 var ref = $(this);
