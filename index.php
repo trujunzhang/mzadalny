@@ -34,8 +34,6 @@ $print_value = mysqli_fetch_array($result_keyinformation_print);
 <body>
 
 
-
-
 <?php
 include("header.php"); // استدعاء ملف الهيدر
 ?>
@@ -116,8 +114,6 @@ include("header.php"); // استدعاء ملف الهيدر
                         $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
                         $ads_city_name = $print_value_city["text"];
                         $ads_city_id = $print_value_city["id"];
-
-
                         ?>
 
 
@@ -125,11 +121,11 @@ include("header.php"); // استدعاء ملف الهيدر
                         <tr>
                             <td><i class="star fa fa-star fa-lg"></i></td>
                             <td>
-                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+                                <a href="<?php echo $url_hraj; ?>ads.php/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
                                     <?php echo $row["ads_title"]; ?>
                                 </a>
 
-                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+                                <a href="<?php echo $url_hraj; ?>ads.php/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
                                     <?php if (empty($image_link)) {
                                     } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
@@ -211,7 +207,7 @@ include("header.php"); // استدعاء ملف الهيدر
                     $pagination = "";
                     if ($lastpage > 1) {
                         $pagination .= "<ul class=\"pagination pagination-lg\">";
-                        
+
                         //previous button
                         if ($page > 1)
                             $pagination .= "";
@@ -315,9 +311,11 @@ include("header.php"); // استدعاء ملف الهيدر
                         <tr>
                             <td><?php echo $row["id"]; ?></td>
                             <td>
-                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+                                <a href="<?php echo $url_hraj; ?>ads/ads.php?id=<?php echo $row["id"]; ?>&title=<?php echo $row["ads_title"]; ?>">
+                                    <?php echo $row["ads_title"]; ?>
+                                </a>
 
-                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+                                <a href="<?php echo $url_hraj; ?>ads/ads.php?<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
                                     <?php if (empty($image_link)) {
                                     } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
