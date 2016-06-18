@@ -125,7 +125,9 @@ include("header.php"); // استدعاء ملف الهيدر
                         <tr>
                             <td><i class="star fa fa-star fa-lg"></i></td>
                             <td>
-                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+                                    <?php echo $row["ads_title"]; ?>
+                                </a>
 
                                 <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
@@ -133,15 +135,19 @@ include("header.php"); // استدعاء ملف الهيدر
                                     } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
 
                                 </a><?php if ($num_ex_ads_query === 0) {
-                                } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
+                                } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?>
+                            </td>
 
                             <td>
                                 <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
                                    class="smallsize">
-                                    <?php echo $ads_city_name; ?></a></td>
+                                    <?php echo $ads_city_name; ?></a>
+                            </td>
 
-                            <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
-                                   class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
+                                   class="smallsize"><?php echo $username_member_2_m_ad; ?></a>
+                            </td>
 
                             <td><?php echo $Time_added; ?></td>
                         </tr>
