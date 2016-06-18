@@ -1,7 +1,7 @@
 # Create mysql database
 
-create database haraj_hobrt1;
+create database b32_15129989_mzadalny;
 
-grant all on haraj_hobrt1.* to 'mzada' identified by 'mzada720';
+grant all on b32_15129989_mzadalny.* to 'b32_15129989' identified by 'wanghao720';
 
-mysql -u mzada -p 'mzada720' haraj_hobrt1
+mysql -u b32_15129989 -p 'mzada720' b32_15129989_mzadalny
