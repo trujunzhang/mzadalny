@@ -2,9 +2,9 @@
 
 $url_hraj = "http://www.mzadalny.com/";
 
-$user_name = "mzada";
-$password = "mzada720";
-$database = "haraj_hobrt1";
+$user_name = "b32_15129989";
+$password = "wanghao720";
+$database = "b32_15129989_mzadalny";
 $server = "127.0.0.1";
 
 
