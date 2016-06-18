@@ -1,6 +1,6 @@
 <?PHP
 
-$url_hraj = "http://www.mzadalny.com/";
+$url_hraj = "http://localhost:8888/mzadalny/";
 
 $user_name = "b32_15129989";
 $password = "wanghao720";
