@@ -210,8 +210,8 @@ include("header.php"); // استدعاء ملف الهيدر
                     */
                     $pagination = "";
                     if ($lastpage > 1) {
-                        $pagination .= "<ul class=\"pagination pagination-lg\">
-";
+                        $pagination .= "<ul class=\"pagination pagination-lg\">";
+                        
                         //previous button
                         if ($page > 1)
                             $pagination .= "";
