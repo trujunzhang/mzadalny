@@ -9,17 +9,17 @@ mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_keyinformation_print = "SELECT * FROM `keyinformation` WHERE id = \"1\" ";
 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
 $print_value = mysqli_fetch_array($result_keyinformation_print);
-$namewebsite = $print_value[namewebsite];
-$namewebsiteen = $print_value[namewebsiteen];
-$keywords = $print_value[keywords];
-$messagesphone = $print_value[messagesphone];
-$description = nl2br($print_value[description]);
-$Facebook_account = $print_value[Facebook_account];
-$Twitter_account = $print_value[Twitter_account];
-$username_mobile = $print_value[username];
-$password_mobile = $print_value[password];
-$emilecommunication = $print_value[emilecommunication];
-$commission = $print_value[commission];
+$namewebsite = $print_value["namewebsite"];
+$namewebsiteen = $print_value["namewebsiteen"];
+$keywords = $print_value["keywords"];
+$messagesphone = $print_value["messagesphone"];
+$description = nl2br($print_value["description"]);
+$Facebook_account = $print_value["Facebook_account"];
+$Twitter_account = $print_value["Twitter_account"];
+$username_mobile = $print_value["username"];
+$password_mobile = $print_value["password"];
+$emilecommunication = $print_value["emilecommunication"];
+$commission = $print_value["commission"];
 
 $fixed_htaccess = $url_hraj;
 
@@ -28,6 +28,8 @@ $fixed_htaccess = $url_hraj;
 include("../include/functions/ftime.php");
 $url_ads = $_SERVER['REQUEST_URI'];
 $exp_ads = explode("/", $url_ads);
+// TODO: djzhang
+$number_tags_update = 0;
 $ads_id = $exp_ads[1 + $number_tags_update];
 
 
@@ -35,25 +37,25 @@ mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_keyinformation_print = "SELECT * FROM `ads` WHERE id = \"$ads_id\" ";
 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
 $print_value = mysqli_fetch_array($result_keyinformation_print);
-$ads_title = $print_value[ads_title];
-$His_announcement_s = $print_value[His_announcement];
-$ads_city = $print_value[ads_city];
-$Last_updated_Ad_update = $print_value[Last_updated_Ad];
-$time_add_ads = $print_value[Time_added];
-$Time_added = timeago($print_value[Time_added]);
+$ads_title = $print_value["ads_title"];
+$His_announcement_s = $print_value["His_announcement"];
+$ads_city = $print_value["ads_city"];
+$Last_updated_Ad_update = $print_value["Last_updated_Ad"];
+$time_add_ads = $print_value["Time_added"];
+$Time_added = timeago($print_value["Time_added"]);
 $Last_updated_Ad_update_arabic = timeago($Last_updated_Ad_update);
-$ads_body = $print_value[ads_body];
-$closecomment = $print_value[closecomment];
-$image_link = $print_value[image_link];
-$close_ads = $print_value[close_ads];
-$ads_contact = $print_value[ads_contact];
+$ads_body = $print_value["ads_body"];
+$closecomment = $print_value["closecomment"];
+$image_link = $print_value["image_link"];
+$close_ads = $print_value["close_ads"];
+$ads_contact = $print_value["ads_contact"];
 //////////////////////////////////////
-$ads_tags_R = $print_value[ads_tags_R];
-$ads_tags_F = $print_value[ads_tags_F];
-$ads_tags_FF = $print_value[ads_tags_FF];
-$un_model = $print_value[un_model];
-$type_ads_other_final = $print_value[type_ads_other_final];
-$timer_mazad_come = $print_value[timer_mazad];
+$ads_tags_R = $print_value["ads_tags_R"];
+$ads_tags_F = $print_value["ads_tags_F"];
+$ads_tags_FF = $print_value["ads_tags_FF"];
+$un_model = $print_value["un_model"];
+$type_ads_other_final = $print_value["type_ads_other_final"];
+$timer_mazad_come = $print_value["timer_mazad"];
 
 ///////////////////////// link next ad ////////////////////
 $link_next_ad = $ads_id - 1;
@@ -64,8 +66,8 @@ $print_value_next_ad = mysqli_fetch_array($result_keyinformation_print_next_ad);
 $if_ad_next_found = mysqli_num_rows($result_keyinformation_print_next_ad);
 if ($if_ad_next_found > 0) {
     $if_found_ad = 1;
-    $new_id_link = $print_value_next_ad[id];
-    $new_title_link = $print_value_next_ad[ads_title];
+    $new_id_link = $print_value_next_ad["id"];
+    $new_title_link = $print_value_next_ad["ads_title"];
 } else {
     $if_found_ad = 0;
 }
@@ -78,18 +80,18 @@ mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement_s\" ";
 $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
 $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
-$group_num_m_ad = $Data_member_m_ad[groupnumber];
-$username_member_2_m_ad = $Data_member_m_ad[username];
-$email_member_2_m_ad = $Data_member_m_ad[email];
-$subscribe_1_member_2_m_ad = $Data_member_m_ad[subscribe_1];
-$id_user_m_ad = $Data_member_m_ad[id];
+$group_num_m_ad = $Data_member_m_ad["groupnumber"];
+$username_member_2_m_ad = $Data_member_m_ad["username"];
+$email_member_2_m_ad = $Data_member_m_ad["email"];
+$subscribe_1_member_2_m_ad = $Data_member_m_ad["subscribe_1"];
+$id_user_m_ad = $Data_member_m_ad["id"];
 
 include("../include/config.php");
 mysqli_query($mysqli, "SET NAMES 'utf8'");
 $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
 $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
 $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
-$ads_city_name = $print_value_city[text];
+$ads_city_name = $print_value_city["text"];
 
 
 ?>
@@ -220,7 +222,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                         $cars = $IMAGES_LINK_ARRAY_P_2;
                         $arrlength = count($cars);
 
-                        $thumbnail_link_ch = $IMAGES_LINK_ARRAY_P_2[1];
+                        $thumbnail_link_ch = $IMAGES_LINK_ARRAY_P_2["1"];
                         if (empty($thumbnail_link_ch)) {
                             $num_start_img = "0";
                         } else {
@@ -230,7 +232,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                         for ($x = $num_start_img; $x < $arrlength; $x++) {
                             ?>
                             <div class="image">
-                                <img src="<?php echo $cars[$x]; ?>" alt="<?php echo $ads_title; ?>" class="carads">
+                                <img src="<?php echo $cars["$x"]; ?>" alt="<?php echo $ads_title; ?>" class="carads">
                                 <div class="watermark"></div>
                             </div>
                             <?php
@@ -249,39 +251,39 @@ include("../header.php"); // استدعاء ملف الهيدر
 
                 <?php
 
-                $ads_tags_R = $print_value[ads_tags_R];
+                $ads_tags_R = $print_value["ads_tags_R"];
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_R = "SELECT * FROM `section` WHERE id = \"$ads_tags_R\" ";
                 $result_keyinformation_print_R = mysqli_query($mysqli, $query_keyinformation_print_R);
                 $print_value_R = mysqli_fetch_array($result_keyinformation_print_R);
-                $title_name_tag_r = $print_value_R[name];
+                $title_name_tag_r = $print_value_R["name"];
 
 
-                $ads_tags_F = $print_value[ads_tags_F];
+                $ads_tags_F = $print_value["ads_tags_F"];
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_F = "SELECT * FROM `section` WHERE id = \"$ads_tags_F\" ";
                 $result_keyinformation_print_F = mysqli_query($mysqli, $query_keyinformation_print_F);
                 $print_value_F = mysqli_fetch_array($result_keyinformation_print_F);
-                $title_tag_F = $print_value_F[name];
+                $title_tag_F = $print_value_F["name"];
 
-                $ads_tags_FF = $print_value[ads_tags_FF];
-                $un_model = $print_value[un_model];
+                $ads_tags_FF = $print_value["ads_tags_FF"];
+                $un_model = $print_value["un_model"];
 
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_FF = "SELECT * FROM `section` WHERE id = \"$ads_tags_FF\" ";
                 $result_keyinformation_print_FF = mysqli_query($mysqli, $query_keyinformation_print_FF);
                 $print_value_FF = mysqli_fetch_array($result_keyinformation_print_FF);
-                $title_tag_FF = $print_value_FF[name];
+                $title_tag_FF = $print_value_FF["name"];
 
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF\" ";
                 $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                 $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                $tag_year = $print_value_year[text];
+                $tag_year = $print_value_year["text"];
 
                 ?>
 
@@ -392,7 +394,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                 </div>
 
                 <?php
-                if (($id_user_m_ad === $id_member || $group_num === "1" || $group_num === "2") and isset($_SESSION['id_members'])) {
+                if (($id_user_m_ad === $id_member || $group_num === "1" || $group_num === "2") and isset($_SESSION["'id_members'"])) {
                     ?>
                     <a href="<?php echo $fixed_htaccess; ?>edit2.php?ads_id=<?php echo $ads_id; ?>"><i
                             class="fa fa-pencil"></i> تعديل</a>
@@ -403,7 +405,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                 ?>
 
                 <?php
-                if (($id_user_m_ad === $id_member || $group_num === "1" || $group_num === "2") and isset($_SESSION['id_members'])) {
+                if (($id_user_m_ad === $id_member || $group_num === "1" || $group_num === "2") and isset($_SESSION["'id_members'"])) {
                     ?>
                     <a href="<?php echo $fixed_htaccess; ?>update2.php?ads_id=<?php echo $ads_id; ?>"><i
                             class="fa fa-refresh"></i> تحديث الإعلان</a>
@@ -440,7 +442,7 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
                 <?php
-                if (isset($_SESSION['id_members'])) {
+                if (isset($_SESSION["'id_members'"])) {
                     ?>
                     <br>
 
@@ -453,7 +455,7 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
                 <?php
-                if (isset($_SESSION['id_members'])) {
+                if (isset($_SESSION["'id_members'"])) {
                     ?>
                     <br>
                     <a href="<?php echo $fixed_htaccess; ?>sendpm.php?username=<?php echo $username_member_2_m_ad; ?>&title=بخصوص إعلانك رقم <?php echo $ads_id; ?>"><i
@@ -534,7 +536,7 @@ include("../header.php"); // استدعاء ملف الهيدر
             <div style="position:absolute; bottom:5px;">
                 <div id="fb-root"></div>
                 <script>(function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
+                        var js, fjs = d.getElementsByTagName(s)["0"];
                         if (d.getElementById(id)) return;
                         js = d.createElement(s);
                         js.id = id;
@@ -555,7 +557,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                data-url="<?php echo $fixed_htaccess; ?>ads/<?php echo $ads_id; ?>" data-text="<?php echo $ads_title; ?>"
                data-via="<?php echo $Twitter_account; ?>" data-lang="ar">تغريد</a>
             <script>!function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                    var js, fjs = d.getElementsByTagName(s)["0"], p = /^http:/.test(d.location) ? 'http' : 'https';
                     if (!d.getElementById(id)) {
                         js = d.createElement(s);
                         js.id = id;
@@ -588,16 +590,16 @@ include("../header.php"); // استدعاء ملف الهيدر
         $i = 1;
         while ($inf_ads_co = mysqli_fetch_array($view_execution_ads)) {
 
-            $His_announcement_s_aa = $inf_ads_co[id_His_response];
+            $His_announcement_s_aa = $inf_ads_co["id_His_response"];
             /// استعدعاء ملف الأتصال بقاعدة البيانات
             include("../include/config.php");
             mysqli_query($mysqli, "SET NAMES 'utf8'");
             $query_login_m_ad02 = "SELECT * FROM `members` where id = \"$His_announcement_s_aa\" ";
             $result_query_m_ad02 = mysqli_query($mysqli, $query_login_m_ad02);
             $Data_member_m_ad02 = mysqli_fetch_array($result_query_m_ad02);
-            $group_num_m_ad02 = $Data_member_m_ad02[groupnumber];
-            $username_member_2_m_ad02 = $Data_member_m_ad02[username];
-            $id_user_m_ad02 = $Data_member_m_ad02[id];
+            $group_num_m_ad02 = $Data_member_m_ad02["groupnumber"];
+            $username_member_2_m_ad02 = $Data_member_m_ad02["username"];
+            $id_user_m_ad02 = $Data_member_m_ad02["id"];
             $i_final = $i++;
 
 
@@ -608,12 +610,12 @@ include("../header.php"); // استدعاء ملف الهيدر
                 <div class="row comment_high">
                     <div class="col-xs-12  col-sm-12 col-md-9 col-lg-9 comment_header">
                         ››
-                        رد رقم <a href="#<?php echo $inf_ads_co[id]; ?>"
-                                  name="<?php echo $inf_ads_co[id]; ?>"><?php echo $i_final; ?></a>
+                        رد رقم <a href="#<?php echo $inf_ads_co["id"]; ?>"
+                                  name="<?php echo $inf_ads_co["id"]; ?>"><?php echo $i_final; ?></a>
 
                         <?php if ($group_num === "1" || $group_num === "2") { ?>
                             <span class="label label-success" style="font-size:12px;"> رقم الرد الأصلي :
-                                <?php echo $inf_ads_co[id]; ?></span>
+                                <?php echo $inf_ads_co["id"]; ?></span>
                         <?php } ?>
 
                         <br>››
@@ -639,7 +641,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                                 عضو محظور</span><?php } ?>
 
                         <br>››
-                        &nbsp; <?php echo timeago($inf_ads_co[Time_added_co]); ?>
+                        &nbsp; <?php echo timeago($inf_ads_co["Time_added_co"]); ?>
 
 
                     </div>
@@ -720,18 +722,18 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
                         <div class="myDivs">
-                            <button class="btn btn-primary btn-xs" id="<?php echo $inf_ads_co[id]; ?>" type="button"
+                            <button class="btn btn-primary btn-xs" id="<?php echo $inf_ads_co["id"]; ?>" type="button"
                                     rel="popover"
                                     data-content="إبلاغ عن العضو: <br /> <a href=<?php echo $fixed_htaccess; ?>users/<?php echo $username_member_2_m_ad02; ?> class=username><?php echo $username_member_2_m_ad02; ?></a>
 			<br /> <br />
 	
-				<button  value=<?php echo $inf_ads_co[id]; ?> rel=&quot;<?php echo $inf_ads_co[id]; ?>&quot; class=&quot;btn btn-primary btn-xs&quot; onclick=Report1(this.value)>بخس السلعة</button><br />
+				<button  value=<?php echo $inf_ads_co["id"]; ?> rel=&quot;<?php echo $inf_ads_co["id"]; ?>&quot; class=&quot;btn btn-primary btn-xs&quot; onclick=Report1(this.value)>بخس السلعة</button><br />
                 
-				<button value=<?php echo $inf_ads_co[id]; ?> rel=&quot;<?php echo $inf_ads_co[id]; ?>&quot;  class=&quot;btn btn-primary btn-xs&quot; onclick=Report2(this.value)>رد غير لائق</button><br />
+				<button value=<?php echo $inf_ads_co["id"]; ?> rel=&quot;<?php echo $inf_ads_co["id"]; ?>&quot;  class=&quot;btn btn-primary btn-xs&quot; onclick=Report2(this.value)>رد غير لائق</button><br />
                            <?php
                                     if ($id_user_m_ad === $id_member) {
                                         ?>
-								<button value=<?php echo $inf_ads_co[id]; ?> rel=&quot;<?php echo $inf_ads_co[id]; ?>&quot;  class=&quot;btn btn-primary btn-xs&quot; onclick=Report3(this.value)>عدم الجدية في الشراء</button> <br/>
+								<button value=<?php echo $inf_ads_co["id"]; ?> rel=&quot;<?php echo $inf_ads_co["id"]; ?>&quot;  class=&quot;btn btn-primary btn-xs&quot; onclick=Report3(this.value)>عدم الجدية في الشراء</button> <br/>
                                 <?php } ?>
  " data-original-title="" title=""><i class="fa fa-flag"> </i> إبلاغ
                             </button>
@@ -747,7 +749,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                 <div class="comment_body">
 
 
-                    <?php echo $inf_ads_co[text]; ?>
+                    <?php echo $inf_ads_co["text"]; ?>
 
                 </div>
 
@@ -767,7 +769,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                         <?php
                         if ($id_user_m_ad02 !== $id_member || $group_num === "1" || $group_num === "2") {
                             ?>
-                            <a href="<?php echo $fixed_htaccess; ?>block.php?comment_id=<?php echo $inf_ads_co[id]; ?>&amp;ads_id=<?php echo $ads_id; ?>&block_username=<?php echo $username_member_2_m_ad02; ?>"><i
+                            <a href="<?php echo $fixed_htaccess; ?>block.php?comment_id=<?php echo $inf_ads_co["id"]; ?>&amp;ads_id=<?php echo $ads_id; ?>&block_username=<?php echo $username_member_2_m_ad02; ?>"><i
                                     class="fa fa-trash-o"></i>&nbsp; حذف الرد + منع العضو من
                                 الرد: <?php echo $username_member_2_m_ad02; ?> </a>
 
@@ -793,14 +795,17 @@ include("../header.php"); // استدعاء ملف الهيدر
         <script>
 
 
-            $("button[rel=popover]")
-                .popover({
-                    offset: 10,
-                    trigger: 'manual',
-                    html: true,
-                    placement: 'bottom',
-                    template: '<div class="popover" onmouseover="clearTimeout(timeoutObj);$(this).mouseleave(function() {$(this).hide();});"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content reportUser"><p></p></div></div></div>'
-                }).mouseenter(function (e) {
+            $("button["
+            rel = popover
+            "]"
+            )
+            .popover({
+                offset: 10,
+                trigger: 'manual',
+                html: true,
+                placement: 'bottom',
+                template: '<div class="popover" onmouseover="clearTimeout(timeoutObj);$(this).mouseleave(function() {$(this).hide();});"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content reportUser"><p></p></div></div></div>'
+            }).mouseenter(function (e) {
                 $(this).popover('show');
             }).mouseleave(function (e) {
                 var ref = $(this);
@@ -856,7 +861,7 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
         <?php
-        if (isset($_SESSION['id_members'])){
+        if (isset($_SESSION["'id_members'"])){
         ?>
 
 
@@ -886,7 +891,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                             <?php
                         } else {
                             ?>
-                            <?php echo $gmla[$randomValue];
+                            <?php echo $gmla["$randomValue"];
                         } ?></div>
 					
 
@@ -900,9 +905,9 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
             <?php
-            if ($_POST['post']) {
+            if ($_POST["'post'"]) {
 
-                $text = $_POST['comment_body'];
+                $text = $_POST["'comment_body'"];
                 $text = secure_input($text, "text_input");
                 $text = nl2br($text);
                 $Time_added_co = time();
@@ -921,7 +926,7 @@ include("../header.php"); // استدعاء ملف الهيدر
 			and text = \"$text\" and Time_added_co = \"$Time_added_co\" ";
                 $result_keyinformation_print_m = mysqli_query($mysqli, $query_keyinformation_print_m);
                 $print_value_m = mysqli_fetch_array($result_keyinformation_print_m);
-                $id_ads_mem_mtb = $print_value_m[id];
+                $id_ads_mem_mtb = $print_value_m["id"];
 
 
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
@@ -929,7 +934,7 @@ include("../header.php"); // استدعاء ملف الهيدر
                 $query_ads_ex = mysqli_query($mysqli, $query_ads);
                 $query_ads_ex_num_co = mysqli_num_rows($query_ads_ex);
                 while ($query_fetch_array = mysqli_fetch_array($query_ads_ex)) {
-                    $id_userss = $query_fetch_array[id_user];
+                    $id_userss = $query_fetch_array["id_user"];
                     $time_now_note = time();
                     $query_add_bank = "	INSERT INTO `note_hraj` 
 			(`id`, `id_note`, `id_mem`, `type`, `un_read`,`time_note`) 
@@ -989,7 +994,7 @@ $fixed_htaccess" . "ads/$ads_id
 
 
             <?php
-            if (!isset($_SESSION['id_members'])) {
+            if (!isset($_SESSION["'id_members'"])) {
                 ?>
                 <br>
                 <div class="alert alert-info">
@@ -1043,32 +1048,32 @@ $fixed_htaccess" . "ads/$ads_id
 
                 <?php
 
-                $ads_tags_R = $print_value[ads_tags_R];
+                $ads_tags_R = $print_value["ads_tags_R"];
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_R = "SELECT * FROM `section` WHERE id = \"$ads_tags_R\" ";
                 $result_keyinformation_print_R = mysqli_query($mysqli, $query_keyinformation_print_R);
                 $print_value_R = mysqli_fetch_array($result_keyinformation_print_R);
-                $title_name_tag_r = $print_value_R[name];
+                $title_name_tag_r = $print_value_R["name"];
 
 
-                $ads_tags_F = $print_value[ads_tags_F];
+                $ads_tags_F = $print_value["ads_tags_F"];
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_F = "SELECT * FROM `section` WHERE id = \"$ads_tags_F\" ";
                 $result_keyinformation_print_F = mysqli_query($mysqli, $query_keyinformation_print_F);
                 $print_value_F = mysqli_fetch_array($result_keyinformation_print_F);
-                $title_tag_F = $print_value_F[name];
+                $title_tag_F = $print_value_F["name"];
 
-                $ads_tags_FF = $print_value[ads_tags_FF];
-                $un_model = $print_value[un_model];
+                $ads_tags_FF = $print_value["ads_tags_FF"];
+                $un_model = $print_value["un_model"];
 
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_keyinformation_print_FF = "SELECT * FROM `section` WHERE id = \"$ads_tags_FF\" ";
                 $result_keyinformation_print_FF = mysqli_query($mysqli, $query_keyinformation_print_FF);
                 $print_value_FF = mysqli_fetch_array($result_keyinformation_print_FF);
-                $title_tag_FF = $print_value_FF[name];
+                $title_tag_FF = $print_value_FF["name"];
 
                 include("../include/config.php");
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
@@ -1183,7 +1188,7 @@ $fixed_htaccess" . "ads/$ads_id
                 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
                 $result_keyinformation_print_num_rows = mysqli_num_rows($result_keyinformation_print);
                 if ($result_keyinformation_print_num_rows > 0) {
-                    $ads_title = $print_value[ads_title];
+                    $ads_title = $print_value["ads_title"];
                     ?>
                     <div class="sidebar page-left-content">
                         <br>
@@ -1194,8 +1199,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
                             </ul>
 
                             <?php
@@ -1316,15 +1321,15 @@ $fixed_htaccess" . "ads/$ads_id
                         <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                            $image_link = $print_value[image_link];
+                            $image_link = $print_value["image_link"];
                             if (!empty($image_link)) {
                                 $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                             }
                             ?>
-                            <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                            <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                     src="<?php
-                                    echo $IMAGES_LINK_ARRAY_P_2[1]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                    title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                    echo $IMAGES_LINK_ARRAY_P_2["1"]; ?>" alt="<?php echo $print_value["ads_title"]; ?>"
+                                    title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                             <?php
                         }
                         ?>
@@ -1346,8 +1351,8 @@ $fixed_htaccess" . "ads/$ads_id
                     <ul class="list-unstyled">
                         <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                             <li>
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                    » <?php echo $print_value[ads_title]; ?></a></li>
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                    » <?php echo $print_value["ads_title"]; ?></a></li>
 
                             <?php
                         }
@@ -1385,7 +1390,7 @@ $fixed_htaccess" . "ads/$ads_id
                         $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF_mode_1\" ";
                         $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                         $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                        $tag_year_model_1 = $print_value_year[text];
+                        $tag_year_model_1 = $print_value_year["text"];
                         ?>
                         إعلانات عن
                         <?php
@@ -1445,15 +1450,16 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -1475,8 +1481,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
@@ -1514,7 +1520,7 @@ $fixed_htaccess" . "ads/$ads_id
                         $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF_mode_1\" ";
                         $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                         $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                        $tag_year_model_1 = $print_value_year[text];
+                        $tag_year_model_1 = $print_value_year["text"];
                         ?>
                         إعلانات عن
                         <?php
@@ -1574,15 +1580,16 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -1604,8 +1611,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
@@ -1644,7 +1651,7 @@ $fixed_htaccess" . "ads/$ads_id
                         $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF_mode_1\" ";
                         $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                         $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                        $tag_year_model_1 = $print_value_year[text];
+                        $tag_year_model_1 = $print_value_year["text"];
                         ?>
                         إعلانات عن
                         <?php
@@ -1700,15 +1707,16 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -1730,8 +1738,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
@@ -1770,7 +1778,7 @@ $fixed_htaccess" . "ads/$ads_id
                         $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF_mode_1\" ";
                         $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                         $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                        $tag_year_model_1 = $print_value_year[text];
+                        $tag_year_model_1 = $print_value_year["text"];
                         ?>
                         إعلانات عن
                         <?php
@@ -1825,16 +1833,17 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
 
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -1856,8 +1865,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
@@ -1895,7 +1904,7 @@ $fixed_htaccess" . "ads/$ads_id
                         $query_keyinformation_print_year = "SELECT * FROM `years` WHERE id = \"$ads_tags_FF_mode_1\" ";
                         $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                         $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
-                        $tag_year_model_1 = $print_value_year[text];
+                        $tag_year_model_1 = $print_value_year["text"];
                         ?>
                         إعلانات عن
                         <?php
@@ -1952,15 +1961,16 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -1982,8 +1992,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
@@ -2107,16 +2117,17 @@ $fixed_htaccess" . "ads/$ads_id
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) {
 
 
-                                $image_link = $print_value[image_link];
+                                $image_link = $print_value["image_link"];
                                 if (!empty($image_link)) {
                                     $IMAGES_LINK_ARRAY_P_2 = explode(",", $image_link);
                                 }
                                 ?>
 
-                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>"><img
+                                <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>"><img
                                         src="<?php
-                                        echo $IMAGES_LINK_ARRAY_P_2[0]; ?>" alt="<?php echo $print_value[ads_title]; ?>"
-                                        title="<?php echo $print_value[ads_title]; ?>" class="img-thumbnail"></a><br>
+                                        echo $IMAGES_LINK_ARRAY_P_2["0"]; ?>"
+                                        alt="<?php echo $print_value["ads_title"]; ?>"
+                                        title="<?php echo $print_value["ads_title"]; ?>" class="img-thumbnail"></a><br>
                                 <?php
                             }
                             ?>
@@ -2138,8 +2149,8 @@ $fixed_htaccess" . "ads/$ads_id
                         <ul class="list-unstyled">
                             <?php while ($print_value = mysqli_fetch_array($result_keyinformation_print)) { ?>
                                 <li>
-                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value[id]; ?>/<?php echo $print_value[ads_title]; ?>">
-                                        » <?php echo $print_value[ads_title]; ?></a></li>
+                                    <a href="<?php echo $fixed_htaccess; ?>ads/<?php echo $print_value["id"]; ?>/<?php echo $print_value["ads_title"]; ?>">
+                                        » <?php echo $print_value["ads_title"]; ?></a></li>
 
                                 <?php
                             }
