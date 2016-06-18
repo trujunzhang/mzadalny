@@ -378,12 +378,7 @@ include("header.php"); // استدعاء ملف الهيدر
 
 
                 <?php
-                $step = 0;
                 while ($row = mysqli_fetch_array($query_ads_ex)) {
-                    $step++;
-                    if ($step >= 2)
-                        break;
-
                     $ads_city = $row["ads_city"];
                     $id_ads = $row["id"];
                     $His_announcement = $row["His_announcement"];
