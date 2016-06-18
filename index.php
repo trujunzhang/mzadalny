@@ -34,7 +34,6 @@ $print_value = mysqli_fetch_array($result_keyinformation_print);
 <body>
 
 
-
 <style>
 
     .navbar {
@@ -167,7 +166,6 @@ $print_value = mysqli_fetch_array($result_keyinformation_print);
 </header>
 
 
-
 <?php
 include("header.php"); // استدعاء ملف الهيدر
 ?>
@@ -183,299 +181,308 @@ include("header.php"); // استدعاء ملف الهيدر
         <?php
         include("search.php")
         ?>
-        <?php
-        include("include/functions/ftime.php");
-        /// استعدعاء ملف الأتصال بقاعدة البيانات
-        include("include/config.php");
-        mysqli_query($mysqli, "SET NAMES 'utf8'");
-        $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" ORDER BY Last_updated_Ad DESC";
-        $query_ads_ex = mysqli_query($mysqli, $query_ads);
-        $query_ads_ex_num_co = mysqli_num_rows($query_ads_ex);
-        if ($query_ads_ex_num_co > 0) {
+
+        <div class="main-col">
+
+            <?php
+            include("main_top.php")
             ?>
 
-            <table class="table tableAds table-borderedAds ">
+            <?php
+            include("include/functions/ftime.php");
+            /// استعدعاء ملف الأتصال بقاعدة البيانات
+            include("include/config.php");
+            mysqli_query($mysqli, "SET NAMES 'utf8'");
+            $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" ORDER BY Last_updated_Ad DESC";
+            $query_ads_ex = mysqli_query($mysqli, $query_ads);
+            $query_ads_ex_num_co = mysqli_num_rows($query_ads_ex);
+            if ($query_ads_ex_num_co > 0) {
+                ?>
 
-                <tbody>
-                <tr>
+                <table class="table tableAds table-borderedAds ">
 
-                    <th></th>
-                    <th style="text-align:right;">العروض</th>
-                    <th>المدينة</th>
-                    <th>المعلن</th>
+                    <tbody>
+                    <tr>
 
-                    <th>قبل</th>
-                </tr>
+                        <th></th>
+                        <th style="text-align:right;">العروض</th>
+                        <th>المدينة</th>
+                        <th>المعلن</th>
 
-
-                <?php
-                include("include/config.php");
-                mysqli_query($mysqli, "SET NAMES 'utf8'");
-                $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" and fixed_home = \"1\" ORDER BY Last_updated_Ad DESC";
-                $query_ads_ex = mysqli_query($mysqli, $query_ads);
-                while ($row = mysqli_fetch_array($query_ads_ex)) {
-                    $ads_city = $row["ads_city"];
-                    $id_ads = $row["id"];
-                    $His_announcement = $row["His_announcement"];
-                    $image_link = $row["image_link"];
-                    $Time_added = timeago($row["Time_added"]);
+                        <th>قبل</th>
+                    </tr>
 
 
-                    $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
-                    $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
-                    $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
-
-
+                    <?php
+                    include("include/config.php");
                     mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
-                    $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
-                    $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
-                    $group_num_m_ad = $Data_member_m_ad["groupnumber"];
-                    $username_member_2_m_ad = $Data_member_m_ad["username"];
-                    $id_user_m_ad = $Data_member_m_ad["id"];
-
-                    mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
-                    $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
-                    $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
-                    $ads_city_name = $print_value_city["text"];
-                    $ads_city_id = $print_value_city["id"];
+                    $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" and fixed_home = \"1\" ORDER BY Last_updated_Ad DESC";
+                    $query_ads_ex = mysqli_query($mysqli, $query_ads);
+                    while ($row = mysqli_fetch_array($query_ads_ex)) {
+                        $ads_city = $row["ads_city"];
+                        $id_ads = $row["id"];
+                        $His_announcement = $row["His_announcement"];
+                        $image_link = $row["image_link"];
+                        $Time_added = timeago($row["Time_added"]);
 
 
+                        $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
+                        $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
+                        $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
+
+
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
+                        $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
+                        $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
+                        $group_num_m_ad = $Data_member_m_ad["groupnumber"];
+                        $username_member_2_m_ad = $Data_member_m_ad["username"];
+                        $id_user_m_ad = $Data_member_m_ad["id"];
+
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
+                        $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
+                        $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
+                        $ads_city_name = $print_value_city["text"];
+                        $ads_city_id = $print_value_city["id"];
+
+
+                        ?>
+
+
+                        </tr>
+                        <tr>
+                            <td><i class="star fa fa-star fa-lg"></i></td>
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+
+                                    <?php if (empty($image_link)) {
+                                    } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
+
+                                </a><?php if ($num_ex_ads_query === 0) {
+                                } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
+
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
+                                   class="smallsize">
+                                    <?php echo $ads_city_name; ?></a></td>
+
+                            <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
+                                   class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
+
+                            <td><?php echo $Time_added; ?></td>
+                        </tr>
+                        <?php
+                    }
                     ?>
 
 
-                    </tr>
-                    <tr>
-                        <td><i class="star fa fa-star fa-lg"></i></td>
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
 
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
-                                <?php if (empty($image_link)) {
-                                } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
 
-                            </a><?php if ($num_ex_ads_query === 0) {
-                            } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
 
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
-                               class="smallsize">
-                                <?php echo $ads_city_name; ?></a></td>
 
-                        <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
-                               class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
-
-                        <td><?php echo $Time_added; ?></td>
-                    </tr>
                     <?php
-                }
-                ?>
+                    /*
+                     Place code to connect to your DB here.
+                    */
+                    $fixed_query_php = "and type_ads_or = \"1\" and fixed_home = \"0\" and fixed_tub = \"0\" and fixed_sec = \"0\" and fixed_sec2 = \"0\" and fixed_sec3 = \"0\"";
+                    mysqli_query($mysqli, "SET NAMES 'utf8'");
+                    include("include/config.php"); // include your code to connect to DB.
+                    $tbl_name = "ads";  //your table name
+                    // How many adjacent pages should be shown on each side?
+                    $adjacents = 2;
+                    /*
+                       First get total number of rows in data table.
+                       If you have a WHERE clause in your query, make sure you mirror it here.
+                    */
 
+                    $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC";
+                    mysqli_query($mysqli, "SET NAMES 'utf8'");
+                    $total_pages = mysqli_fetch_array(mysqli_query($mysqli, $query));
+                    $total_pages = $total_pages["num"];
 
+                    /* Setup vars for query. */
+                    $targetpage = "index.php";  //your file name  (the name of this file)
+                    $limit = 40;         //how many items to show per page
 
+                    $start = 0;        //if no page var is given, set start to 0
+                    $page = 0;
+                    if (isset($_GET["page"])) {
+                        $page = $_GET["page"];
+                        $start = ($page - 1) * $limit;    //first item to display on this page
+                    }
 
+                    /* Get data. */
+                    $sql = "SELECT * FROM `$tbl_name` WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC LIMIT $start, $limit";
+                    mysqli_query($mysqli, "SET NAMES 'utf8'");
+                    $result = mysqli_query($mysqli, $sql);
 
+                    /* Setup page vars for display. */
+                    if ($page == 0) $page = 1;     //if no page var is given, default to 1.
+                    $prev = $page - 1;       //previous page is page - 1
+                    $next = $page + 1;       //next page is page + 1
+                    $lastpage = ceil($total_pages / $limit);  //lastpage is = total pages / items per page, rounded up.
+                    $lpm1 = $lastpage - 1;      //last page minus 1
 
-
-                <?php
-                /*
-                 Place code to connect to your DB here.
-                */
-                $fixed_query_php = "and type_ads_or = \"1\" and fixed_home = \"0\" and fixed_tub = \"0\" and fixed_sec = \"0\" and fixed_sec2 = \"0\" and fixed_sec3 = \"0\"";
-                mysqli_query($mysqli, "SET NAMES 'utf8'");
-                include("include/config.php"); // include your code to connect to DB.
-                $tbl_name = "ads";  //your table name
-                // How many adjacent pages should be shown on each side?
-                $adjacents = 2;
-                /*
-                   First get total number of rows in data table.
-                   If you have a WHERE clause in your query, make sure you mirror it here.
-                */
-
-                $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC";
-                mysqli_query($mysqli, "SET NAMES 'utf8'");
-                $total_pages = mysqli_fetch_array(mysqli_query($mysqli, $query));
-                $total_pages = $total_pages["num"];
-
-                /* Setup vars for query. */
-                $targetpage = "index.php";  //your file name  (the name of this file)
-                $limit = 40;         //how many items to show per page
-
-                $start = 0;        //if no page var is given, set start to 0
-                $page = 0;
-                if (isset($_GET["page"])) {
-                    $page = $_GET["page"];
-                    $start = ($page - 1) * $limit;    //first item to display on this page
-                }
-
-                /* Get data. */
-                $sql = "SELECT * FROM `$tbl_name` WHERE close_ads = \"0\" $fixed_query_php ORDER BY Last_updated_Ad DESC LIMIT $start, $limit";
-                mysqli_query($mysqli, "SET NAMES 'utf8'");
-                $result = mysqli_query($mysqli, $sql);
-
-                /* Setup page vars for display. */
-                if ($page == 0) $page = 1;     //if no page var is given, default to 1.
-                $prev = $page - 1;       //previous page is page - 1
-                $next = $page + 1;       //next page is page + 1
-                $lastpage = ceil($total_pages / $limit);  //lastpage is = total pages / items per page, rounded up.
-                $lpm1 = $lastpage - 1;      //last page minus 1
-
-                /*
-                 Now we apply our rules and draw the pagination object.
-                 We're actually saving the code to a variable in case we want to draw it more than once.
-                */
-                $pagination = "";
-                if ($lastpage > 1) {
-                    $pagination .= "<ul class=\"pagination pagination-lg\">
+                    /*
+                     Now we apply our rules and draw the pagination object.
+                     We're actually saving the code to a variable in case we want to draw it more than once.
+                    */
+                    $pagination = "";
+                    if ($lastpage > 1) {
+                        $pagination .= "<ul class=\"pagination pagination-lg\">
 ";
-                    //previous button
-                    if ($page > 1)
-                        $pagination .= "";
-                    else
-                        $pagination .= "";
+                        //previous button
+                        if ($page > 1)
+                            $pagination .= "";
+                        else
+                            $pagination .= "";
 
-                    //pages
-                    if ($lastpage < 7 + ($adjacents * 2)) //not enough pages to bother breaking it up
-                    {
-                        for ($counter = 1; $counter <= $lastpage; $counter++) {
-                            if ($counter == $page)
-                                $pagination .= "<li class=\"active\"><a href=\"\">$counter</a></li>"; // a not link
-                            else
-                                $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
-                        }
-                    } elseif ($lastpage > 5 + ($adjacents * 2)) //enough pages to hide some
-                    {
-                        //close to beginning; only hide later pages
-                        if ($page < 1 + ($adjacents * 2)) {
-                            for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
+                        //pages
+                        if ($lastpage < 7 + ($adjacents * 2)) //not enough pages to bother breaking it up
+                        {
+                            for ($counter = 1; $counter <= $lastpage; $counter++) {
                                 if ($counter == $page)
                                     $pagination .= "<li class=\"active\"><a href=\"\">$counter</a></li>"; // a not link
                                 else
                                     $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
                             }
-                            $pagination .= "...";
-                            $pagination .= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
-                            $pagination .= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";
-                        } //in middle; hide some front and some back
-                        elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
-                            $pagination .= "<li><a href=\"$targetpage?page=1\">1</a></li>";
-                            $pagination .= "<li><a href=\"$targetpage?page=2\">2</a></li>";
-                            $pagination .= "...";
-                            for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
-                                if ($counter == $page)
-                                    $pagination .= "<li class=\"active\"><a href=\"\">$counter</a></li>"; //a not link
-                                else
-                                    $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
-                            }
-                            $pagination .= "...";
-                            $pagination .= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
-                            $pagination .= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";
-                        } //close to end; only hide early pages
-                        else {
-                            $pagination .= "<li><a href=\"$targetpage?page=1\">1</a></li>";
-                            $pagination .= "<li><a href=\"$targetpage?page=2\">2</a></li>";
-                            $pagination .= "...";
-                            for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++) {
-                                if ($counter == $page)
+                        } elseif ($lastpage > 5 + ($adjacents * 2)) //enough pages to hide some
+                        {
+                            //close to beginning; only hide later pages
+                            if ($page < 1 + ($adjacents * 2)) {
+                                for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
+                                    if ($counter == $page)
+                                        $pagination .= "<li class=\"active\"><a href=\"\">$counter</a></li>"; // a not link
+                                    else
+                                        $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
+                                }
+                                $pagination .= "...";
+                                $pagination .= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
+                                $pagination .= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";
+                            } //in middle; hide some front and some back
+                            elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
+                                $pagination .= "<li><a href=\"$targetpage?page=1\">1</a></li>";
+                                $pagination .= "<li><a href=\"$targetpage?page=2\">2</a></li>";
+                                $pagination .= "...";
+                                for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
+                                    if ($counter == $page)
+                                        $pagination .= "<li class=\"active\"><a href=\"\">$counter</a></li>"; //a not link
+                                    else
+                                        $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
+                                }
+                                $pagination .= "...";
+                                $pagination .= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
+                                $pagination .= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";
+                            } //close to end; only hide early pages
+                            else {
+                                $pagination .= "<li><a href=\"$targetpage?page=1\">1</a></li>";
+                                $pagination .= "<li><a href=\"$targetpage?page=2\">2</a></li>";
+                                $pagination .= "...";
+                                for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++) {
+                                    if ($counter == $page)
 
-                                    $pagination .= "<li class=\"active\"><a href=\"$counter\">$counter</a></li>"; // a
-                                else
-                                    $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
+                                        $pagination .= "<li class=\"active\"><a href=\"$counter\">$counter</a></li>"; // a
+                                    else
+                                        $pagination .= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";
+                                }
                             }
                         }
+
+                        //next button
+                        if ($page < $counter - 1)
+                            $pagination .= "";
+                        else
+                            $pagination .= "";
+                        $pagination .= "</ul>\n";
                     }
-
-                    //next button
-                    if ($page < $counter - 1)
-                        $pagination .= "";
-                    else
-                        $pagination .= "";
-                    $pagination .= "</ul>\n";
-                }
-                ?>
-                <?php
-                while ($row = mysqli_fetch_array($result)) {
-                    $ads_city = $row["ads_city"];
-                    $id_ads = $row["id"];
-                    $His_announcement = $row["His_announcement"];
-                    $image_link = $row["image_link"];
-                    $Time_added = timeago($row["Time_added"]);
+                    ?>
+                    <?php
+                    while ($row = mysqli_fetch_array($result)) {
+                        $ads_city = $row["ads_city"];
+                        $id_ads = $row["id"];
+                        $His_announcement = $row["His_announcement"];
+                        $image_link = $row["image_link"];
+                        $Time_added = timeago($row["Time_added"]);
 
 
-                    $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
-                    $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
-                    $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
+                        $view_query_ads = "SELECT * FROM `comments` WHERE id_ads = \"$id_ads\"";
+                        $unicode_arabic = mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $view_execution_ads = mysqli_query($mysqli, $view_query_ads);
+                        $num_ex_ads_query = mysqli_num_rows($view_execution_ads);
 
 
-                    mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
-                    $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
-                    $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
-                    $group_num_m_ad = $Data_member_m_ad["groupnumber"];
-                    $username_member_2_m_ad = $Data_member_m_ad["username"];
-                    $id_user_m_ad = $Data_member_m_ad["id"];
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_login_m_ad = "SELECT * FROM `members` where id = \"$His_announcement\" ";
+                        $result_query_m_ad = mysqli_query($mysqli, $query_login_m_ad);
+                        $Data_member_m_ad = mysqli_fetch_array($result_query_m_ad);
+                        $group_num_m_ad = $Data_member_m_ad["groupnumber"];
+                        $username_member_2_m_ad = $Data_member_m_ad["username"];
+                        $id_user_m_ad = $Data_member_m_ad["id"];
 
-                    mysqli_query($mysqli, "SET NAMES 'utf8'");
-                    $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
-                    $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
-                    $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
-                    $ads_city_name = $print_value_city["text"];
-                    $ads_city_id = $print_value_city["id"];
+                        mysqli_query($mysqli, "SET NAMES 'utf8'");
+                        $query_keyinformation_print_city = "SELECT * FROM `cities` WHERE id = \"$ads_city\" ";
+                        $result_keyinformation_print_city = mysqli_query($mysqli, $query_keyinformation_print_city);
+                        $print_value_city = mysqli_fetch_array($result_keyinformation_print_city);
+                        $ads_city_name = $print_value_city["text"];
+                        $ads_city_id = $print_value_city["id"];
 
 
+                        ?>
+
+
+                        </tr>
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+
+                                <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
+
+                                    <?php if (empty($image_link)) {
+                                    } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
+
+                                </a><?php if ($num_ex_ads_query === 0) {
+                                } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
+
+                            <td>
+                                <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
+                                   class="smallsize">
+                                    <?php echo $ads_city_name; ?></a></td>
+
+                            <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
+                                   class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
+
+                            <td><?php echo $Time_added; ?></td>
+                        </tr>
+                        <?php
+                    }
                     ?>
 
 
-                    </tr>
-                    <tr>
-                        <td><?php echo $row["id"]; ?></td>
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>"><?php echo $row["ads_title"]; ?></a>
+                    </tbody>
+                </table>
 
-                            <a href="<?php echo $url_hraj; ?>ads/<?php echo $row["id"]; ?>/<?php echo $row["ads_title"]; ?>">
 
-                                <?php if (empty($image_link)) {
-                                } else { ?>&nbsp;<i class="fa fa-camera-retro black"></i>  <?php } ?>
+                <?= $pagination; ?>
 
-                            </a><?php if ($num_ex_ads_query === 0) {
-                            } else { ?>&nbsp; <?php echo $num_ex_ads_query ?> ردود <?php } ?></td>
 
-                        <td>
-                            <a href="<?php echo $url_hraj; ?>city/<?php echo $row["ads_city"]; ?>/<?php echo $ads_city_name; ?>"
-                               class="smallsize">
-                                <?php echo $ads_city_name; ?></a></td>
-
-                        <td><a href="<?php echo $url_hraj; ?>users/<?php echo $username_member_2_m_ad; ?>"
-                               class="smallsize"><?php echo $username_member_2_m_ad; ?></a></td>
-
-                        <td><?php echo $Time_added; ?></td>
-                    </tr>
-                    <?php
-                }
+                <?php
+            } else {
                 ?>
+                <div class="alert alert-info">
+                    لا يتوفر اعلانات في الوقت الحالي ليتم عرضها
+                </div>
+                <?php
+            }
 
-
-                </tbody>
-            </table>
-
-
-            <?= $pagination; ?>
-
-
-            <?php
-        } else {
             ?>
-            <div class="alert alert-info">
-                لا يتوفر اعلانات في الوقت الحالي ليتم عرضها
-            </div>
-            <?php
-        }
 
-        ?>
+        </div>
 
     </div>
 
