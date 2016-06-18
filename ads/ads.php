@@ -32,6 +32,8 @@ $exp_ads = explode("/", $url_ads);
 $number_tags_update = 0;
 $ads_id = $exp_ads[1 + $number_tags_update];
 $ads_id = "18";
+$id_member = "18";
+$group_num = "18";
 
 
 mysqli_query($mysqli, "SET NAMES 'utf8'");
