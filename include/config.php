@@ -1,5 +1,7 @@
 <?PHP
 
+$url_hraj = "http://www.mzadalny.com/";
+
 $user_name = "mzada";
 $password = "mzada720";
 $database = "haraj_hobrt1";
@@ -16,7 +18,7 @@ if ($mysqli->connect_error) {
     die('Connect Error (' . $mysqli->connect_errno . ') '
         . $mysqli->connect_error);
 } else {
-    print "Connection to the Server opened";
+//    print "Connection to the Server opened";
 }
 
 ?>

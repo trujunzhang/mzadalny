@@ -77,9 +77,6 @@ include("header.php"); // استدعاء ملف الهيدر
                 mysqli_query($mysqli, "SET NAMES 'utf8'");
                 $query_ads = "SELECT * FROM `ads` WHERE close_ads = \"0\" and type_ads_or = \"1\" and fixed_home = \"1\" ORDER BY Last_updated_Ad DESC";
                 $query_ads_ex = mysqli_query($mysqli, $query_ads);
-                // TODO: djzhang
-                $url_hraj = "http://www.baidu.com";
-
                 while ($row = mysqli_fetch_array($query_ads_ex)) {
                     $ads_city = $row[ads_city];
                     $id_ads = $row[id];
