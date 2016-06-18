@@ -181,6 +181,9 @@ include("header.php"); // استدعاء ملف الهيدر
 
     <div class="col-xs-12  col-sm-9 col-md-9 col-lg-9 " id="secondDiv">
         <?php
+        include("search.php")
+        ?>
+        <?php
         include("include/functions/ftime.php");
         /// استعدعاء ملف الأتصال بقاعدة البيانات
         include("include/config.php");
