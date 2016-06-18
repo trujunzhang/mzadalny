@@ -34,6 +34,7 @@ $ads_id = $exp_ads[1 + $number_tags_update];
 $ads_id = "18";
 $id_member = "18";
 $group_num = "18";
+$title_name = "wanghao";
 
 
 mysqli_query($mysqli, "SET NAMES 'utf8'");
@@ -271,7 +272,6 @@ include("../header.php"); // استدعاء ملف الهيدر
                 $result_keyinformation_print_year = mysqli_query($mysqli, $query_keyinformation_print_year);
                 $print_value_year = mysqli_fetch_array($result_keyinformation_print_year);
                 $tag_year = $print_value_year["text"];
-
                 ?>
 
 
