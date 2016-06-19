@@ -2,11 +2,10 @@
 
 $url_hraj = "http://localhost:8888/mzadalny/";
 
-$user_name = "b32_15129989";
-$password = "wanghao720";
-$database = "b32_15129989_mzadalny";
+$user_name = "mzada";
+$password = "mzada720";
+$database = "haraj_hobrt1";
 $server = "127.0.0.1";
-
 
 $mysqli = new mysqli($server, $user_name, $password, $database);
 
