@@ -29,12 +29,17 @@ include("../include/functions/ftime.php");
 $url_ads = $_SERVER['REQUEST_URI'];
 $exp_ads = explode("/", $url_ads);
 // TODO: djzhang
-$number_tags_update = 0;
-$ads_id = $exp_ads[1 + $number_tags_update];
-$ads_id = "18";
-$id_member = "18";
-$group_num = "18";
-$title_name = "wanghao";
+//if (isset($_GET['id'])) {
+//    echo $_GET['id'];
+//} else {
+//     Fallback behaviour goes here
+//}
+//$number_tags_update = 0;
+//$ads_id = $exp_ads[1 + $number_tags_update];
+$ads_id = $_GET['id'];
+$id_member = $ads_id;
+$group_num = $ads_id;
+$title_name = $_GET['title'];
 
 
 mysqli_query($mysqli, "SET NAMES 'utf8'");
