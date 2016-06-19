@@ -4,7 +4,7 @@ $url_hraj = "http://localhost:8888/mzadalny/";
 
 $user_name = "mzada";
 $password = "mzada720";
-$database = "haraj_hobrt1";
+$database = "mzadalny";
 $server = "127.0.0.1";
 
 $mysqli = new mysqli($server, $user_name, $password, $database);
