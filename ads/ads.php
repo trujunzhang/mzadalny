@@ -292,16 +292,22 @@ include("../header.php"); // استدعاء ملف الهيدر
 
                         <a class="tag fromad"
                            href="<?php echo $fixed_htaccess; ?>tags/<?php echo $ads_tags_F; ?>/<?php echo $title_tag_F; ?>"
-                           title="<?php echo $title_tag_F; ?>"><?php echo $title_tag_F; ?></a>
+                           title="<?php echo $title_tag_F; ?>">
+                            <?php echo $title_tag_F; ?>
+                        </a>
 
                         <a class="tag fromad"
                            href="<?php echo $fixed_htaccess; ?>tags/<?php echo $ads_tags_F; ?>/<?php echo $title_tag_F; ?>/<?php echo $ads_tags_FF; ?>/allcities"
-                           title="<?php echo $title_tag_FF; ?>"><?php echo $title_tag_F; ?><?php echo $tag_year; ?></a>
+                           title="<?php echo $title_tag_FF; ?>">
+                            <?php echo $title_tag_F; ?>+<?php echo $tag_year; ?>
+                        </a>
 
 
                         <a class="tag fromad"
                            href="<?php echo $fixed_htaccess; ?>tags/<?php echo $ads_tags_R; ?>/<?php echo $title_name_tag_r; ?>"
-                           title="<?php echo $title_name; ?>"><?php echo $title_name_tag_r; ?></a>
+                           title="<?php echo $title_name; ?>">
+                            <?php echo $title_name_tag_r; ?>-BWM
+                        </a>
 
                         <?php
                     } else {
