@@ -616,6 +616,10 @@ include("../header.php"); // استدعاء ملف الهيدر
 
         </script>
 
+<!--        --><?php
+//        include("session.php")
+//        ?>
+
         <?php
         include("../include/config.php");
         mysqli_query($mysqli, "SET NAMES 'utf8'");
@@ -1942,9 +1946,10 @@ $fixed_htaccess" . "ads/$ads_id
 
             </div> <!-- 2 -->
         </div><!-- 1 -->
-
-
+        
+        
     </div>
+
     <?php
     ob_end_flush();
     include("../footer.php"); // ادراج الفوتر
