@@ -1,4 +1,3 @@
-
 <?php
 /// استعدعاء ملف الأتصال بقاعدة البيانات
 include("../include/config.php");
@@ -40,24 +39,16 @@ while ($inf_ads_co = mysqli_fetch_array($view_execution_ads)) {
                 &nbsp; <a href="<?php echo $fixed_htaccess; ?>users/<?php echo $username_member_2_m_ad02; ?>"
                           class="username"><?php echo $username_member_2_m_ad02; ?></a>
 
-                <?php if ($group_num_m_ad02 === "1") { ?><span style="background:#<?php echo $color1_group; ?>;"
-                                                               class="label label-success">
-                        مدير الموقع</span><?php } ?>
+                <?php if ($group_num_m_ad02 === "1") { ?><span class="label label-success"> مدير الموقع</span><?php } ?>
 
-                <?php if ($group_num_m_ad02 === "6") { ?><span style="
-                    background:#<?php echo $color3_group; ?>;" class="label label-success">عضو</span><?php } ?>
+                <?php if ($group_num_m_ad02 === "6") { ?><span class="label label-success">عضو</span><?php } ?>
 
-                <?php if ($His_announcement_s === $id_user_m_ad02) { ?><span style="
-                    background:#<?php echo $color4_group; ?>;" class="label label-success">
-                        المعلن</span><?php } ?>
+                <?php if ($His_announcement_s === $id_user_m_ad02) { ?>
+                    <span class="label label-success">المعلن</span><?php } ?>
+                <?php if ($group_num_m_ad02 === "2") { ?>
+                    <span class="label label-success">مشرف الموقع</span><?php } ?>
 
-                <?php if ($group_num_m_ad02 === "2") { ?><span
-                    class="label label-success">مشرف الموقع</span><?php } ?>
-
-                <?php if ($group_num_m_ad02 === "5") { ?><span style="background:#<?php echo $color2_group; ?>;"
-                                                               class="label label-success">
-                        عضو محظور</span><?php } ?>
-
+                <?php if ($group_num_m_ad02 === "5") { ?><span class="label label-success"> عضو محظور</span><?php } ?>
                 <br>››
                 &nbsp; <?php echo timeago($inf_ads_co["Time_added_co"]); ?>
 
