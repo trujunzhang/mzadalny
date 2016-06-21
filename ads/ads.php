@@ -579,9 +579,9 @@ include("../header.php"); // استدعاء ملف الهيدر
         </div>
 
 
-        <!--        --><?php
-        //        include("comments.php")
-        //        ?>
+        <?php
+        include("comments.php")
+        ?>
 
         <script>
             $("button[rel=popover]")
@@ -616,9 +616,6 @@ include("../header.php"); // استدعاء ملف الهيدر
 
         </script>
 
-<!--        --><?php
-//        include("session.php")
-//        ?>
 
         <?php
         include("../include/config.php");
@@ -1946,8 +1943,8 @@ $fixed_htaccess" . "ads/$ads_id
 
             </div> <!-- 2 -->
         </div><!-- 1 -->
-        
-        
+
+
     </div>
 
     <?php

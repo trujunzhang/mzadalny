@@ -7,6 +7,11 @@ $password = "mzada720";
 $database = "mzadalny";
 $server = "127.0.0.1";
 
+$color1_group = #ffffff
+$color2_group = #ffffff
+$color3_group = #ffffff
+$color4_group = #ffffff
+
 $mysqli = new mysqli($server, $user_name, $password, $database);
 
 /*
