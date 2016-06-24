@@ -375,22 +375,9 @@ include("../header.php"); // استدعاء ملف الهيدر
 
 
                 <hr>
-
-                <div class="contact">
-                    <?php if ($time_add_ads + (60 * 60 * 24 * 60) > time()) { ?>
-                        <span class="label label-success">وسيلة الإتصال :</span>
-                        <strong>    <?php echo $ads_contact; ?> <i class="fa fa-phone"></i></strong>
-                        <br>  <br>
-                    <?php } else { ?>
-                        <div class="alert alert-info">
-                            هذا الإعلان قديم، لقد تم إزالة معلومات الإتصال بصاحب الإعلان،بإمكانك التواصل مع صاحب الإعلان
-                            عن طريق الرد على الإعلان أو عبر الرسائل الخاصة.
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-
+                <?php
+                include("contact.php")
+                ?>
                 <?php
                 if (($id_user_m_ad === $id_member || $group_num === "1" || $group_num === "2") and isset($_SESSION["'id_members'"])) {
                     ?>
