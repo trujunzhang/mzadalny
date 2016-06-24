@@ -1,8 +1,11 @@
 <?PHP
 
+include("arabic.php");
+include("timeago.php");
+
 function timeago($Time_added)
 {
-    return $Time_added;
+    return time_ago($Time_added);
 }
 
 //http://php.net/manual/en/reserved.variables.get.php
@@ -31,7 +34,7 @@ function getUrlWithout($getNames)
 
 function getCurrentPage($pageKey)
 {
-    
+
     $page = isset($_GET[$pageKey]);
     return $page;
 }
