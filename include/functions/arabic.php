@@ -10,7 +10,7 @@ $lang["minutes"] = "دقائق";
 $lang["hours"] = "ساعات";
 $lang["months"] = "شهور";
 $lang["years"] = "سنوات";
-$lang["ago"] = "منذ";
+$lang["ago"] = "قبل";
 $lang["day"] = "يوم";
 $lang["days"] = "ايام";
 
