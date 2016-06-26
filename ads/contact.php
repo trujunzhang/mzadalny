@@ -33,33 +33,39 @@
     </style>
 
     <?php if ($time_add_ads + (60 * 60 * 24 * 60) > time()) { ?>
-        <span class="label label-success">وسيلة الإتصال :</span>
-        <strong>
-            <?php
-            $is_opensooq_contact = false;
-            if (strpos($ads_contact, 'base64') !== false) {
-                $is_opensooq_contact = true;
-                $opensooq_phone_id = explode(",", $ads_contact)[1];
-                mysqli_query($mysqli, "SET NAMES 'utf8'");
-                $query_keyinformation_print = "SELECT * FROM `opensooq_phone` WHERE id = \"$opensooq_phone_id\" ";
-                $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
-                $print_value_opensooq_phone = mysqli_fetch_array($result_keyinformation_print);
-                $ads_contact = $print_value_opensooq_phone["phone"];
-            }
-            ?>
 
-            <?php if ($is_opensooq_contact == true) { ?>
+
+        <?php
+        $is_opensooq_contact = false;
+        if (strpos($ads_contact, 'base64') !== false) {
+            $is_opensooq_contact = true;
+            $opensooq_phone_id = explode(",", $ads_contact)[1];
+            mysqli_query($mysqli, "SET NAMES 'utf8'");
+            $query_keyinformation_print = "SELECT * FROM `opensooq_phone` WHERE id = \"$opensooq_phone_id\" ";
+            $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
+            $print_value_opensooq_phone = mysqli_fetch_array($result_keyinformation_print);
+            $ads_contact = $print_value_opensooq_phone["phone"];
+        }
+        ?>
+
+        <?php if ($is_opensooq_contact == true) { ?>
+            <div class="col-xs-4  col-sm-4 col-md-4 col-lg-3" style="display: inline;">
+                <span class="label label-success">وسيلة الإتصال :</span>
                 <div class="phoneNumber">
                     <span class="fa fa-phone"></span>
                     <span dir="ltr" class="tableCell center sellerPhone ">
                         <img src="data:image/jpeg;base64,<?php echo $ads_contact; ?>">
                     </span>
                 </div>
-            <?php } else { ?>
+            </div>
+            <div class="clear"></div>
+        <?php } else { ?>
+            <span class="label label-success">وسيلة الإتصال :</span>
+            <strong>
                 <?php echo $ads_contact; ?>
                 <i class="fa fa-phone"></i>
-            <?php } ?>
-        </strong>
+            </strong>
+        <?php } ?>
         <br> <br>
     <?php } else { ?>
         <div class="alert alert-info">
