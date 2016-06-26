@@ -1,4 +1,36 @@
 <div class="contact">
+    <style>
+        .phoneNumber {
+            margin: 15px auto 0;
+            background-color: #87b821;
+            color: #fff;
+            overflow: hidden;
+            border-bottom: solid 5px #759b26;
+            border-radius: 2px;
+        }
+
+        .phoneNumber > span:first-child {
+            padding: 19px 3px 18px 10px;
+            border-left: solid 1px #b0d27d;
+            padding-right: 6px;
+            font-size: 24px;
+            margin-left: 0
+        }
+
+        .phoneNumber > span {
+            display: table-cell;
+            vertical-align: middle
+        }
+
+        .sellerPhone {
+            width: 220px;
+            text-align: center;
+            border-right: solid 1px #5e8226;
+            padding: 10px 0;
+            cursor: pointer
+        }
+
+    </style>
 
     <?php if ($time_add_ads + (60 * 60 * 24 * 60) > time()) { ?>
         <span class="label label-success">وسيلة الإتصال :</span>
@@ -12,17 +44,21 @@
                 $query_keyinformation_print = "SELECT * FROM `opensooq_phone` WHERE id = \"$opensooq_phone_id\" ";
                 $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
                 $print_value_opensooq_phone = mysqli_fetch_array($result_keyinformation_print);
-                $ads_contact = 'data:image/jpeg;base64,' + $print_value_opensooq_phone["phone"];
+                $ads_contact = $print_value_opensooq_phone["phone"];
             }
             ?>
 
             <?php if ($is_opensooq_contact == true) { ?>
-                <img src="data:image/jpeg;base64,<?php echo $ads_contact; ?>">
+                <div class="phoneNumber">
+                    <span class="fa fa-phone"></span>
+                    <span dir="ltr" class="tableCell center sellerPhone ">
+                        <img src="data:image/jpeg;base64,<?php echo $ads_contact; ?>">
+                    </span>
+                </div>
             <?php } else { ?>
                 <?php echo $ads_contact; ?>
+                <i class="fa fa-phone"></i>
             <?php } ?>
-
-            <i class="fa fa-phone"></i>
         </strong>
         <br> <br>
     <?php } else { ?>
