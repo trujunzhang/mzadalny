@@ -10,7 +10,7 @@
             $query_keyinformation_print = "SELECT * FROM `opensooq_phone` WHERE id = \"$opensooq_phone_id\" ";
             $result_keyinformation_print = mysqli_query($mysqli, $query_keyinformation_print);
             $print_value_opensooq_phone = mysqli_fetch_array($result_keyinformation_print);
-            $ads_contact = $print_value_opensooq_phone["phone"];
+            $ads_contact = 'data:image/jpeg;base64,' + $print_value_opensooq_phone["phone"];
         }
 
         ?>
