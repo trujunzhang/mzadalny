@@ -12,7 +12,6 @@
             $print_value_opensooq_phone = mysqli_fetch_array($result_keyinformation_print);
             $ads_contact = 'data:image/jpeg;base64,' + $print_value_opensooq_phone["phone"];
         }
-
         ?>
         <span class="label label-success">وسيلة الإتصال :</span>
         <strong>
