@@ -1,7 +1,7 @@
 <div class="contact">
     <style>
         .phoneNumber {
-            margin: 15px auto 0;
+            margin: 5px auto 0;
             background-color: #87b821;
             color: #fff;
             overflow: hidden;
@@ -49,7 +49,7 @@
         ?>
 
         <?php if ($is_opensooq_contact == true) { ?>
-            <div class="col-xs-4  col-sm-4 col-md-4 col-lg-3" style="display: inline;">
+            <div class="col-xs-6  col-sm-6 col-md-5 col-lg-3" style="display: inline;">
                 <span class="label label-success">وسيلة الإتصال :</span>
                 <div class="phoneNumber">
                     <span class="fa fa-phone"></span>
