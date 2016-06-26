@@ -49,7 +49,7 @@
         ?>
 
         <?php if ($is_opensooq_contact == true) { ?>
-            <div class="col-xs-6  col-sm-6 col-md-5 col-lg-3" style="display: inline;">
+            <div class="col-xs-9 col-sm-5 col-md-12 col-lg-3" style="display: inline;">
                 <span class="label label-success">وسيلة الإتصال :</span>
                 <div class="phoneNumber">
                     <span class="fa fa-phone"></span>
