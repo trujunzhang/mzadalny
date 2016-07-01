@@ -473,6 +473,62 @@ include("header.php"); // استدعاء ملف الهيدر
             ?>
 
         </div>
+
+
+        <div class="hidden-xs">
+
+
+            <h3>opensooq_comment_date </h3>
+
+
+            <?php
+            include("include/config.php");
+            mysqli_query($mysqli, "SET NAMES 'utf8'");
+            $query_ads = "SELECT * FROM `opensooq_comment_date`ORDER BY id DESC";
+            $query_ads_ex = mysqli_query($mysqli, $query_ads);
+            $query_ads_ex_num = mysqli_num_rows($query_ads_ex);
+            if ($query_ads_ex_num > 0) {
+                ?>
+
+                <table class="table tableAds table-borderedAds ">
+
+                    <tbody>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Text</th>
+                    </tr>
+
+
+                    <?php
+                    while ($row = mysqli_fetch_array($query_ads_ex)) {
+                        ?>
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td><?php echo $row["text"]; ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+
+
+                    </tbody>
+                </table>
+
+
+                <a href="order.php" class="tag">المزيد من الطلبات</a>
+                <?php
+            } else {
+                ?>
+                <div class="alert alert-info">
+                    لا يتوفر طلبات في الوقت الحالي
+                </div>
+                <?php
+            }
+
+            ?>
+
+        </div>
     </div>
 
 </div>
